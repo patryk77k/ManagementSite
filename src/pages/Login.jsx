@@ -6,11 +6,11 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { login } = useLogin();
+  const { login, err, isPending } = useLogin();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    login({ email, password });
+    login(email, password);
   };
 
   return (
@@ -31,7 +31,9 @@ const Login = () => {
           value={password}
         />
       </label>
-      <button>Log in!</button>
+      {!isPending && <button>Log in!</button>}
+      {isPending && <button>Loading...</button>}
+      {err && <p>{err}</p>}
     </form>
   );
 };
