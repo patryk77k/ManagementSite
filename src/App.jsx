@@ -1,20 +1,20 @@
 import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Login from "./pages/Login";
-import Register from "./pages/Register";
+import Signup from "./pages/Signup";
 import Navbar from "./pages/Navbar";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
       <BrowserRouter>
+        <Navbar />
         <Switch>
           <Route exact path="/login">
             <Login />
           </Route>
-          <Route exact path="/register">
-            <Register />
+          <Route exact path="/signup">
+            <Signup />
           </Route>
         </Switch>
       </BrowserRouter>
