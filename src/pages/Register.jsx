@@ -5,12 +5,13 @@ import { useSignup } from "../hook/useSignup";
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [displayName, setDisplayName] = useState("");
 
   const { register, err, isPending } = useSignup();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    register(email, password);
+    register(email, password, displayName);
   };
 
   return (
@@ -29,6 +30,14 @@ const Register = () => {
           type="password"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
+        />
+      </label>
+      <label>
+        <span>display name:</span>
+        <input
+          type="text"
+          onChange={(e) => setDisplayName(e.target.value)}
+          value={displayName}
         />
       </label>
       {!isPending && <button>Register!</button>}
