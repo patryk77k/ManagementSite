@@ -1,23 +1,28 @@
 import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { useAuthContext } from "./hook/useAuthContext";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Navbar from "./pages/Navbar";
 
 function App() {
+  const { authIsReady } = useAuthContext();
+
   return (
     <div className="App">
-      <BrowserRouter>
-        <Navbar />
-        <Switch>
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          <Route exact path="/signup">
-            <Signup />
-          </Route>
-        </Switch>
-      </BrowserRouter>
+      {authIsReady && (
+        <BrowserRouter>
+          <Navbar />
+          <Switch>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/signup">
+              <Signup />
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      )}
     </div>
   );
 }
