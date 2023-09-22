@@ -1,24 +1,22 @@
+import { useState } from "react";
+import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase/config";
-import { collection, getDocs } from "firebase/firestore";
-import { useEffect, useState, useReducer } from "react";
 
-export const useFirestore = (collection) => {
+export const useFirestore = (collectionName) => {
   const [data, setData] = useState("");
-  console.log(data);
 
-  
-  useEffect(() => {
-    const getData = async () => {
-      const ref = collection(db, collection);
-      const response = await getDocs(ref);
-
-      let result = [];
-      response.forEach((doc) => {
-        result.push({ id: doc.id, ...doc.data() });
+  const addDocument = async ({ name, amount }) => {
+    try {
+      const response = await addDoc(collection(db, collectionName), {
+        name,
+        amount,
       });
-      setData(result);
-    };
-    getData();
-  }, []);
-  return { getData };
+      console.log(response);
+      setData(response);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  return { addDocument, data };
 };
