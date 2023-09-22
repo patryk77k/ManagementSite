@@ -1,16 +1,13 @@
 import { useState } from "react";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, doc, deleteDoc } from "firebase/firestore";
 import { db } from "../firebase/config";
 
 export const useFirestore = (collectionName) => {
   const [data, setData] = useState("");
 
-  const addDocument = async ({ name, amount }) => {
+  const addDocument = async (doc) => {
     try {
-      const response = await addDoc(collection(db, collectionName), {
-        name,
-        amount,
-      });
+      const response = await addDoc(collection(db, collectionName), { ...doc });
       console.log(response);
       setData(response);
     } catch (err) {
@@ -18,5 +15,9 @@ export const useFirestore = (collectionName) => {
     }
   };
 
-  return { addDocument, data };
+  const deleteDocument = async (id) => {
+    await deleteDoc(doc(db, "books", id));
+  };
+
+  return { addDocument, deleteDocument, data };
 };
