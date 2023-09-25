@@ -4,9 +4,10 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import Navbar from "./components/Navbar";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 function App() {
-  const { authIsReady } = useAuthContext();
+  const { authIsReady, user } = useAuthContext();
 
   return (
     <div className="App">
@@ -16,13 +17,16 @@ function App() {
 
           <Switch>
             <Route exact path="/">
-              <Home />
+              {!user && <Redirect to="/login" />}
+              {user && <Home />}
             </Route>
             <Route exact path="/login">
-              <Login />
+              {!user && <Login />}
+              {user && <Redirect to="/" />}
             </Route>
             <Route exact path="/signup">
-              <Signup />
+              {!user && <Signup />}
+              {user && <Redirect to="/" />}
             </Route>
           </Switch>
         </BrowserRouter>
