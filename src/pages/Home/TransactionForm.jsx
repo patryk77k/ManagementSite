@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFirestore } from "../../hook/useFirestore";
 
 export default function TransactionForm() {
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
 
-  const { addDocument } = useFirestore("transactions");
+  const { addDocument, response } = useFirestore("transactions");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,9 +13,14 @@ export default function TransactionForm() {
       name,
       amount,
     });
-    setName("");
-    setAmount("");
   };
+
+  useEffect(() => {
+    if (response.success) {
+      setName("");
+      setAmount("");
+    }
+  }, [response.success]);
 
   return (
     <>
