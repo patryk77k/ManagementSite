@@ -3,8 +3,7 @@ import { db } from "../firebase/config";
 import { collection, onSnapshot } from "firebase/firestore";
 
 export const useCollection = (collectionName) => {
-  const [data, setData] = useState([]);
-  console.log(data);
+  const [documents, setDocuments] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
@@ -13,10 +12,10 @@ export const useCollection = (collectionName) => {
         snapshot.forEach((doc) => {
           result.push({ id: doc.id, ...doc.data() });
         });
-        setData(result);
+        setDocuments(result);
       });
     };
     getData(collectionName);
   }, []);
-  return { data };
+  return { documents };
 };

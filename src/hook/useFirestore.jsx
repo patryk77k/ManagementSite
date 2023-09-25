@@ -16,7 +16,7 @@ export const useFirestore = (collectionName) => {
   };
 
   const deleteDocument = async (id) => {
-    await deleteDoc(doc(db, "books", id));
+    await deleteDoc(doc(db, "transactions", id));
   };
 
   return { addDocument, deleteDocument, data };

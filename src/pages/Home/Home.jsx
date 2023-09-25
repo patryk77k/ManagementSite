@@ -1,26 +1,17 @@
-import React, { useEffect } from "react";
-import TransactionForm from "../TransactionForm/TransactionForm";
 import { useCollection } from "../../hook/useCollection";
-import { useFirestore } from "../../hook/useFirestore";
+import TransactionForm from "./TransactionForm";
+import TransactionList from "./TransactionList";
 
 const Home = () => {
-  const { data } = useCollection("books"); //zwracam tylko data, funkcji nie potrzebuje do otrzymania danych
-  const { deleteDocument } = useFirestore();
-
-  const handleDelete = (id) => {
-    deleteDocument(id);
-  };
-
+  const { documents } = useCollection("transactions");
   return (
-    <div>
-      <TransactionForm />
-      {data.map((doc) => (
-        <p key={doc.id}>
-          {doc.title}
-          {doc.name}
-          <button onClick={() => handleDelete(doc.id)}>delete</button>
-        </p>
-      ))}
+    <div className="container">
+      <div className="content">
+        {documents && <TransactionList transactions={documents} />}
+      </div>
+      <div className="sidebar">
+        <TransactionForm />
+      </div>
     </div>
   );
 };

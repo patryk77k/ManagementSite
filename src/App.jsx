@@ -1,4 +1,3 @@
-import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { useAuthContext } from "./hook/useAuthContext";
 import Home from "./pages/Home/Home";
@@ -14,6 +13,7 @@ function App() {
       {authIsReady && (
         <BrowserRouter>
           <Navbar />
+
           <Switch>
             <Route exact path="/">
               <Home />

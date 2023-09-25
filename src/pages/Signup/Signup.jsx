@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useSignup } from "../../hook/useSignup";
+import "./Signup.css";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -15,7 +16,8 @@ const Signup = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="signup-form">
+      <h2>sign up</h2>
       <label>
         <span>email:</span>
         <input

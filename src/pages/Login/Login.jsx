@@ -1,24 +1,21 @@
 import React from "react";
 import { useState } from "react";
 import { useLogin } from "../../hook/useLogin";
-
-
+import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, err, isPending } = useLogin();
-  
 
   const handleSubmit = (e) => {
     e.preventDefault();
     login(email, password);
   };
 
-  
-
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="login-form">
+      <h2>Login</h2>
       <label>
         <span>email:</span>
         <input
@@ -38,7 +35,6 @@ const Login = () => {
       {!isPending && <button>Log in!</button>}
       {isPending && <button>Loading...</button>}
       {err && <p>{err}</p>}
-      
     </form>
   );
 };
