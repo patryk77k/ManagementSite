@@ -13,17 +13,17 @@ export const useSignup = () => {
     setIsPending(true);
 
     try {
-      // signup
       const res = await createUserWithEmailAndPassword(auth, email, password);
 
       if (!res) {
         throw new Error("Could not complete signup");
       }
-      // add display name to user
+
       await updateProfile(auth.currentUser, { displayName });
 
-      dispatch({ type: "SIGNUP", payload: res.user });
+      dispatch({ type: "LOGIN", payload: res.user });
       setIsPending(false);
+      setErr(null);
     } catch (err) {
       setErr(err.message);
       setIsPending(false);
