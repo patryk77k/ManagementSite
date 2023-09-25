@@ -13,6 +13,8 @@ export default function TransactionForm() {
       name,
       amount,
     });
+    setName("");
+    setAmount("");
   };
 
   return (
