@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import TransactionForm from "./TransactionForm";
-import { useCollection } from "../hook/useCollection";
-import { useFirestore } from "../hook/useFirestore";
+import TransactionForm from "../TransactionForm/TransactionForm";
+import { useCollection } from "../../hook/useCollection";
+import { useFirestore } from "../../hook/useFirestore";
 
 const Home = () => {
   const { data } = useCollection("books"); //zwracam tylko data, funkcji nie potrzebuje do otrzymania danych

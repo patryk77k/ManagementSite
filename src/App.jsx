@@ -1,10 +1,10 @@
 import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { useAuthContext } from "./hook/useAuthContext";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Navbar from "./pages/Navbar";
+import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
+import Signup from "./pages/Signup/Signup";
+import Navbar from "./components/Navbar";
 
 function App() {
   const { authIsReady } = useAuthContext();

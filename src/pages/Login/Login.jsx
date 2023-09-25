@@ -1,18 +1,21 @@
 import React from "react";
 import { useState } from "react";
-import { useSignup } from "../hook/useSignup";
+import { useLogin } from "../../hook/useLogin";
 
-const Signup = () => {
+
+
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [displayName, setDisplayName] = useState("");
-
-  const { signup, err, isPending } = useSignup();
+  const { login, err, isPending } = useLogin();
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    signup(email, password, displayName);
+    login(email, password);
   };
+
+  
 
   return (
     <form onSubmit={handleSubmit}>
@@ -32,19 +35,12 @@ const Signup = () => {
           value={password}
         />
       </label>
-      <label>
-        <span>display name:</span>
-        <input
-          type="text"
-          onChange={(e) => setDisplayName(e.target.value)}
-          value={displayName}
-        />
-      </label>
-      {!isPending && <button>Register!</button>}
+      {!isPending && <button>Log in!</button>}
       {isPending && <button>Loading...</button>}
       {err && <p>{err}</p>}
+      
     </form>
   );
 };
 
-export default Signup;
+export default Login;
