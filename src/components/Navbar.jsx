@@ -1,41 +1,20 @@
-import { Link } from "react-router-dom";
-import { useAuthContext } from "../hook/useAuthContext";
-import { useLogout } from "../hook/useLogout";
-
-// styles
+//styles & images
 import "./Navbar.css";
+import Temple from "../assets/temple.svg";
 
-export default function Navbar() {
-  const { logout } = useLogout();
-  const { user } = useAuthContext();
+import React from "react";
 
+const Navbar = () => {
   return (
-    <nav className="navbar">
+    <div>
       <ul>
-        <li className="title">myMoney</li>
-
-        {!user && (
-          <>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/signup">Signup</Link>
-            </li>
-          </>
-        )}
-
-        {user && (
-          <>
-            <li>hello, {user.displayName}</li>
-            <li>
-              <button className="btn" onClick={logout}>
-                Logout
-              </button>
-            </li>
-          </>
-        )}
+        <li className="logo">
+          <img src={Temple} alt="dojo logo" />
+          <span>The Dojo</span>
+        </li>
       </ul>
-    </nav>
+    </div>
   );
-}
+};
+
+export default Navbar;
