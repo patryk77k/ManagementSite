@@ -16,17 +16,17 @@ export const useLogin = () => {
     setIsPending(true);
 
     try {
+      const res = await signInWithEmailAndPassword(auth, email, password);
       //update online status
 
-      const res = await signInWithEmailAndPassword(auth, email, password);
-
-      dispatch({ type: "LOGIN", payload: res.user });
-      const { uid } = user;
-      const userRef = doc(db, "users", uid);
+      const userRef = doc(db, "users", res.user.uid);
       console.log(userRef);
       await updateDoc(userRef, {
         online: true,
       });
+
+      dispatch({ type: "LOGIN", payload: res.user });
+
       setIsPending(false);
     } catch (err) {
       setErr(err.message);
