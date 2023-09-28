@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 //styles
 import "./Signup.css";
+import { useSignup } from "../../hook/useSignup";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -9,13 +10,15 @@ const Signup = () => {
   const [thumbnail, setThumbnail] = useState(null);
   const [thumbnailError, setThumbnailError] = useState(null);
 
+  const { signup, err, isPending } = useSignup();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email, password, displayName);
+    signup(email, password, displayName, thumbnail);
   };
 
   const handleFileChange = (e) => {
-    setThumbnailError(null);
+    setThumbnail(null);
     let selected = e.target.files[0];
     console.log(selected);
 
@@ -25,9 +28,11 @@ const Signup = () => {
     }
     if (!selected.type.includes("image")) {
       setThumbnailError("Selected file must be an image");
+      return;
     }
-    if (selected.size > 100000) {
+    if (selected.size > 100000000000) {
       setThumbnailError("Image file size must be less than 100kb");
+      return;
     }
     setThumbnailError(null);
     setThumbnail(selected);
@@ -67,8 +72,10 @@ const Signup = () => {
       <label>
         <span>Profile thumbnail:</span>
         <input required type="file" onChange={handleFileChange} />
+        {thumbnailError && <div className="error">{thumbnailError}</div>}
       </label>
       <button className="btn">Sign up</button>
+      {err && <p>{err}</p>}
     </form>
   );
 };
