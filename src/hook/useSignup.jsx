@@ -1,7 +1,8 @@
-import { auth, storage } from "../firebase/config";
+import { useState } from "react";
+import { auth, storage, db } from "../firebase/config";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { useState } from "react";
+import { setDoc, doc } from "firebase/firestore";
 import { useAuthContext } from "./useAuthContext";
 
 export const useSignup = () => {
@@ -21,9 +22,6 @@ export const useSignup = () => {
       }
       // upload user thumbnail
 
-      // const uploadPath = `thumbnails/${res.user.uid}/${thumbnail.name}`;
-      // const img = await storage.ref(uploadPath).put(thumbnail);
-      // const imgUrl = await img.ref.getDownloadURL();
       const uploadPath = `thumbnails/${res.user.uid}/${thumbnail.name}`;
       const storageRef = ref(storage, uploadPath);
 
@@ -36,6 +34,14 @@ export const useSignup = () => {
 
       // add display name to user
       await updateProfile(auth.currentUser, { displayName, photoURL: imgUrl });
+
+      // create a user document
+      const docRef = doc(db, "users", res.user.uid);
+      await setDoc(docRef, {
+        online: true,
+        displayName,
+        photoURL: imgUrl,
+      });
 
       dispatch({ type: "LOGIN", payload: res.user });
       setIsPending(false);
