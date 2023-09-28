@@ -16,6 +16,7 @@ export const useLogout = () => {
     setIsPending(true);
 
     try {
+      //update online status
       const { uid } = user;
       const userRef = doc(db, "users", uid);
       console.log(userRef);
