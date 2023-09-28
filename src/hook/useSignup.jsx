@@ -1,5 +1,5 @@
 import { auth, storage } from "../firebase/config";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
