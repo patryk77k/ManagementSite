@@ -8,6 +8,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import Project from "./pages/project/Project";
+import OnlineUsers from "./components/OnlineUsers";
 
 //import components
 import Navbar from "./components/Navbar";
@@ -20,7 +21,7 @@ function App() {
     <div className="App">
       {authIsReady && (
         <BrowserRouter>
-          <Sidebar />
+          {user && <Sidebar />}
           <div className="container">
             <Navbar />
             <Switch>
@@ -46,6 +47,7 @@ function App() {
               </Route>
             </Switch>
           </div>
+          {user && <OnlineUsers />}
         </BrowserRouter>
       )}
     </div>
