@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import { useCollection } from "../../hook/useCollection";
 
@@ -23,10 +22,20 @@ const Create = () => {
   const [category, setCategory] = useState("");
   const [user, setUser] = useState("");
   const [assignedUsers, setAssignedUsers] = useState([]);
+  const [formError, setFormError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setFormError(null);
 
+    if (!category) {
+      setFormError("please fill out categories field");
+      return;
+    }
+    if (assignedUsers.length < 1) {
+      setFormError("please add some users");
+      return;
+    }
     console.log(name, details, dueDate, category.value, assignedUsers);
   };
 
@@ -85,6 +94,7 @@ const Create = () => {
         </label>
 
         <button className="btn">Add Project</button>
+        {formError && <p>{formError}</p>}
       </form>
     </div>
   );
