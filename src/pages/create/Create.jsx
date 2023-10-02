@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import { useCollection } from "../../hook/useCollection";
 import { useAuthContext } from "../../hook/useAuthContext";
+import { useFirestore } from "../../hook/useFirestore";
 
 //styles
 import "./Create.css";
@@ -26,37 +27,13 @@ const Create = () => {
 
   const [assignedUsers, setAssignedUsers] = useState([]);
   const [formError, setFormError] = useState("");
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setFormError(null);
-
-    if (!category) {
-      setFormError("please fill out categories field");
-      return;
-    }
-    if (assignedUsers.length < 1) {
-      setFormError("please add some users");
-      return;
-    }
-    console.log(name, details, dueDate, category.value, assignedUsers);
-  };
-
-  useEffect(() => {
-    if (documents) {
-      const options = documents.map((u) => {
-        return { value: { ...user, id: user.id }, label: user.displayName };
-      });
-
-      setUsers(options);
-    }
-  }, [documents]);
+  const { addDocument } = useFirestore("projects");
 
   const assignedUsersList = assignedUsers.map((u) => {
     return {
       displayName: u.value.displayName,
       photoURL: u.value.photoURL,
-      id: u.value.id,
+      id: u.value.uid,
     };
   });
 
@@ -75,7 +52,31 @@ const Create = () => {
     assignedUsersList,
   };
 
-  console.log(project);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormError(null);
+
+    if (!category) {
+      setFormError("please fill out categories field");
+      return;
+    }
+    if (assignedUsers.length < 1) {
+      setFormError("please add some users");
+      return;
+    }
+
+    addDocument({ project });
+  };
+
+  useEffect(() => {
+    if (documents) {
+      const options = documents.map((u) => {
+        return { value: { ...user, id: user.id }, label: user.displayName };
+      });
+
+      setUsers(options);
+    }
+  }, [documents]);
 
   return (
     <div className="create-form">
