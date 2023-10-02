@@ -1,4 +1,4 @@
-import { useState, useReducer } from "react";
+import { useReducer } from "react";
 import { collection, addDoc, doc, deleteDoc } from "firebase/firestore";
 import { db } from "../firebase/config";
 

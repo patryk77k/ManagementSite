@@ -3,6 +3,7 @@ import Select from "react-select";
 import { useCollection } from "../../hook/useCollection";
 import { useAuthContext } from "../../hook/useAuthContext";
 import { useFirestore } from "../../hook/useFirestore";
+import { useHistory } from "react-router-dom";
 
 //styles
 import "./Create.css";
@@ -15,6 +16,7 @@ const categories = [
 ];
 
 const Create = () => {
+  const history = useHistory();
   const { documents } = useCollection("users");
   const [users, setUsers] = useState("");
   const { user } = useAuthContext("");
@@ -27,30 +29,17 @@ const Create = () => {
 
   const [assignedUsers, setAssignedUsers] = useState([]);
   const [formError, setFormError] = useState("");
-  const { addDocument } = useFirestore("projects");
+  const { addDocument, response } = useFirestore("projects");
 
-  const assignedUsersList = assignedUsers.map((u) => {
-    return {
-      displayName: u.value.displayName,
-      photoURL: u.value.photoURL,
-      id: u.value.uid,
-    };
-  });
+  useEffect(() => {
+    if (documents) {
+      const options = documents.map((user) => {
+        return { value: { ...user, id: user.id }, label: user.displayName };
+      });
 
-  const createdBy = {
-    displayName: user.displayName,
-    photoURL: user.photoURL,
-    id: user.uid,
-  };
-
-  const project = {
-    name,
-    details,
-    category: category.value,
-    comments: [],
-    createdBy,
-    assignedUsersList,
-  };
+      setUsers(options);
+    }
+  }, [documents]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -64,19 +53,34 @@ const Create = () => {
       setFormError("please add some users");
       return;
     }
+    const assignedUsersList = assignedUsers.map((u) => {
+      return {
+        displayName: u.value.displayName,
+        photoURL: u.value.photoURL,
+        id: u.value.id,
+      };
+    });
 
-    addDocument({ project });
-  };
+    const createdBy = {
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      id: user.uid,
+    };
 
-  useEffect(() => {
-    if (documents) {
-      const options = documents.map((u) => {
-        return { value: { ...user, id: user.id }, label: user.displayName };
-      });
+    const project = {
+      name,
+      details,
+      category: category.value,
+      comments: [],
+      createdBy,
+      assignedUsersList,
+    };
 
-      setUsers(options);
+    await addDocument(project);
+    if (!response.error) {
+      history.push("/");
     }
-  }, [documents]);
+  };
 
   return (
     <div className="create-form">
