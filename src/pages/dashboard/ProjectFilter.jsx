@@ -10,13 +10,13 @@ const projectList = [
   "sales",
 ];
 
-const ProjectFilter = () => {
+const ProjectFilter = ({ changeFilter }) => {
   const [currentFilter, setCurrentFilter] = useState("all");
 
   const handleClick = (newFilter) => {
     setCurrentFilter(newFilter);
+    changeFilter(newFilter);
   };
-  console.log(currentFilter.target);
 
   return (
     <div className="project-filter">
