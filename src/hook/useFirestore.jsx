@@ -64,8 +64,9 @@ export const useFirestore = (collectionName) => {
   };
 
   const deleteDocument = async (id) => {
+    dispatch({ type: "IS_PENDING" });
     try {
-      await deleteDoc(doc(db, "transactions", id));
+      await deleteDoc(doc(db, collectionName, id));
       dispatch({ type: "DELETED_DOCUMENT" });
     } catch (err) {
       dispatch({ type: "ERROR", payload: err.message });
