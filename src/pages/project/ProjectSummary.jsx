@@ -23,9 +23,9 @@ const ProjectSummary = ({ project }) => {
         <p className="details">{project.details}</p>
         <h4>Project assigned to:</h4>
         <div className="assigned-users">
-          {project.assignedUsersList.map((user) => (
-            <div key={user.id}>
-              <Avatar src={user.photoURL} />
+          {project.assignedUsersList.map((assigmedUser) => (
+            <div key={assigmedUser.id}>
+              <Avatar src={assigmedUser.photoURL} />
             </div>
           ))}
         </div>
