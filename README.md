@@ -2,7 +2,7 @@
 ## Live version link
 [Here](https://managementsite-c1e80.web.app)
 
-##Used Stuff: 
+## Used Stuff: 
 - React
 - Java Script
 - Firebase Auth
@@ -11,7 +11,7 @@
 
   More Info in package.json
 
-##Features: 
+## Features: 
 
 - Register a new user with an avatar:
         Implement a user registration system allowing the upload of an avatar image.
