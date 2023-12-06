@@ -9,7 +9,7 @@
 - Firebase Firestore
 - Firebase Storage
 
-  More Info in package.json
+ <i> More Info in package.json</i>
 
 ## Features: 
 
