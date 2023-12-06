@@ -7,8 +7,7 @@
 <img src="https://picr.eu/images/2023/12/06/RvrTY.png" width="600">
 <img src="https://picr.eu/images/2023/12/06/RvLJS.png" width="600">
 
-## 💻 Used Stuff: 
-> - React
+## 💻 Used Stuff:  - React
 - Java Script
 - Firebase Auth
 - Firebase Firestore
