@@ -1,6 +1,7 @@
 
 # ⭐ Live version link
-[CLICK HERE!](https://managementsite-c1e80.web.app)
+
+[Click here!](https://managementsite-c1e80.web.app)
 
 ## 💻 Screenshots:
 <img src="https://picr.eu/images/2023/12/06/RSenT.png" width="600"/>
