@@ -1,12 +1,9 @@
 
 # Live version link
 [Here](https://managementsite-c1e80.web.app)
-
-![Rvgp4.png](https://picr.eu/images/2023/12/06/Rvgp4.png)
-![RvFvu.png](https://picr.eu/images/2023/12/06/RvFvu.png)
-![Rvsse.png](https://picr.eu/images/2023/12/06/Rvsse.png)
-![Rv4ET.png](https://picr.eu/images/2023/12/06/Rv4ET.png)
-
+![RvyWJ.png](https://picr.eu/images/2023/12/06/RvyWJ.png)
+![RvIdL.png](https://picr.eu/images/2023/12/06/RvIdL.png)
+![RvRjW.png](https://picr.eu/images/2023/12/06/RvRjW.png)
 ## Used Stuff: 
 - React
 - Java Script
