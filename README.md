@@ -1,7 +1,7 @@
-<img src="https://github.githubass…/icons/emoji/atom.png?v8"/>
+
 # Live version link
 [CLICK HERE!](https://managementsite-c1e80.web.app)
-
+:grinning:
 ## Screenshots:
 <img src="https://picr.eu/images/2023/12/06/RvmsV.png" width="600">
 <img src="https://picr.eu/images/2023/12/06/RvrTY.png" width="600">
