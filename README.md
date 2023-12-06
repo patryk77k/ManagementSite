@@ -40,7 +40,7 @@
 
 - Add comments to a task:
         Implement the ability to add comments to tasks.
-        Store comments in the database, associating them with the respective task."/>
+        Store comments in the database, associating them with the respective task.>
 
 ## 💻  Install:
   
