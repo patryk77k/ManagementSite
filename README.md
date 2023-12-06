@@ -17,7 +17,7 @@
  <i> More Info in package.json</i>
 
  
-#heart
+
 ## 🚀 Features: 
 
 - Register a new user with an avatar:
