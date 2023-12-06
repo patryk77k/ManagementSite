@@ -7,7 +7,8 @@
 <img src="https://picr.eu/images/2023/12/06/RvrTY.png" width="600">
 <img src="https://picr.eu/images/2023/12/06/RvLJS.png" width="600">
 
-## 💻 Used Stuff:  - React
+## 💻 Used Stuff:  
+- React
 - Java Script
 - Firebase Auth
 - Firebase Firestore
@@ -40,4 +41,15 @@
 - Add comments to a task:
         Implement the ability to add comments to tasks.
         Store comments in the database, associating them with the respective task."/>
+
+## 💻 Install:
+  
+```
+npm i
+```
+
+## 💻 Run:
+```
+npm run dev
+```
 
