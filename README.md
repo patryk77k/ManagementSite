@@ -42,13 +42,13 @@
         Implement the ability to add comments to tasks.
         Store comments in the database, associating them with the respective task."/>
 
-## 💻 Install:
+## 💻  Install:
   
 ```
 npm i
 ```
 
-## 💻 Run:
+## 💻  Run:
 ```
 npm run dev
 ```
