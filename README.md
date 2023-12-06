@@ -1,6 +1,6 @@
 
 # Live version link
-[Here](https://managementsite-c1e80.web.app)
+[CLICK HERE!](https://managementsite-c1e80.web.app)
 
 ## Screenshots:
 <img src="https://picr.eu/images/2023/12/06/RvmsV.png" width="600">
