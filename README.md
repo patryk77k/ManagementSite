@@ -16,8 +16,8 @@
 
  <i> More Info in package.json</i>
 
- :triumph:
-
+ 
+#heart
 ## Features: 
 
 - Register a new user with an avatar:
