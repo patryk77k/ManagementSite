@@ -1,5 +1,5 @@
 
-# ⭐: Live version link
+# ⭐ Live version link
 [CLICK HERE!](https://managementsite-c1e80.web.app)
 
 ## 💻 Screenshots:
