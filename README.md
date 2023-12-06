@@ -16,7 +16,7 @@
 
  <i> More Info in package.json</i>
 
-## Features: 
+## :triumph:Features: 
 
 - Register a new user with an avatar:
         Implement a user registration system allowing the upload of an avatar image.
