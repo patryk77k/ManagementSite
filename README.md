@@ -25,9 +25,7 @@
         Implement a feature to create tasks and associate them with specific users.
         Store tasks in a database, linking them to the assigned user.
 
-- Mark a task as done, only for the logged-in user (indicated by a green dot):
-        Create a feature to mark tasks as "done."
-        Implement authorization to allow only the logged-in user, identified by a green dot, to complete the task.
+- Allow marking a task as done only for users who are presently logged in (indicated by a green dot) and are assigned to the project.
 
 - Filter tasks by categories:
         Develop a filtering mechanism enabling users to filter tasks based on categories.
