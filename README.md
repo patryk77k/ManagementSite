@@ -1,4 +1,4 @@
-(https://github.githubass…/icons/emoji/atom.png?v8)
+[qwdq](https://github.githubass…/icons/emoji/atom.png?v8)
 # Live version link
 [CLICK HERE!](https://managementsite-c1e80.web.app)
 
